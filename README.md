@@ -9,5 +9,4 @@ chezmoi init https://github.com/Tindarid/dotfiles.git
 ```
 
 ## TODO
-1. Recheck Oh My Zsh installation on fresh machine
-2. Linux setup
+1. Linux setup
