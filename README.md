@@ -1,12 +1,14 @@
-# Dotfiles (See [chezmoi](https://www.chezmoi.io/))
+# Dotfiles
 
-## Mac OS
+Powered by [chezmoi](https://www.chezmoi.io/).
 
-```bash
+## macOS
+
+```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install chezmoi 
-chezmoi init https://github.com/Tindarid/dotfiles.git
+chezmoi init git@github.com:Tindarid/dotfiles.git
 ```
 
-## TODO
-1. Linux setup
+## Linux
+TODO
