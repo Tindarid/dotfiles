@@ -10,5 +10,8 @@ brew install chezmoi
 chezmoi init git@github.com:Tindarid/dotfiles.git
 ```
 
+### TODO
+1. Customize and use ranger/tmux
+
 ## Linux
 TODO
