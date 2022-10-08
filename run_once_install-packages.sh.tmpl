@@ -4,7 +4,10 @@ echo "No support"
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
 brew install cmake
-brew install tmux ranger
+
 brew tap homebrew/cask-fonts
 brew install --cask font-iosevka-ss08
+
+brew install tmux ranger
+brew install ripgrep tokei bat exa
 {{ end -}}
