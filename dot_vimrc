@@ -1,0 +1,125 @@
+set nocompatible
+
+" Plugins
+call plug#begin()
+
+Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'xuhdev/singlecompile'
+Plug 'dracula/vim'
+Plug 'kana/vim-operator-user'
+Plug 'godlygeek/tabular'
+Plug 'florentc/vim-tla'
+
+call plug#end()
+
+if &term == "alacritty"
+  let &term = "xterm-256color"
+endif
+
+" For tabs and indent
+set softtabstop=2
+set tabstop=2
+set shiftwidth=2
+set smarttab
+set expandtab
+set smartindent
+
+" Encoding
+set encoding=utf-8
+set termencoding=utf-8
+
+" No other files
+set noswapfile
+set nobackup
+set noundofile
+
+" Search
+set ignorecase
+set smartcase
+set incsearch
+set nohlsearch
+
+" Colors
+if has('termguicolors')
+  set termguicolors
+endif
+colorscheme dracula
+syntax on
+
+if has('gui')
+    set guioptions-=mrLtT
+endif
+
+if !exists("g:syntax_on")
+    syntax enable
+endif
+
+" Other
+set backspace=indent,eol,start " allow backspacing over everything in insert mode.
+set history=200		             " keep 200 lines of command line history
+set ruler	                     " show the cursor position all the time
+set showcmd                    " display incomplete commands
+set wildmenu                   " display completion matches in a status line
+set ttimeout                   " time out for key codes
+set ttimeoutlen=100            " wait up to 100ms after Esc for special key
+set scrolloff=5                " show a few lines of context around the cursor.
+set autochdir
+set hidden
+set ttyfast                    " rendering
+set conceallevel=2             " Markdown and Tex
+set number                     " line numbers
+set autoread                   " autoreloading file
+set laststatus=2               " always display status bar
+
+" Share clipboard. To check: vim --version | grep clipboard
+set clipboard=unnamedplus
+
+" Bindings
+let mapleader = "\<Space>"
+
+" Bindings for windows
+nmap <silent> <Leader>wh :wincmd h<CR>
+nmap <silent> <Leader>wj :wincmd j<CR>
+nmap <silent> <Leader>wk :wincmd k<CR>
+nmap <silent> <Leader>wl :wincmd l<CR>
+nmap <silent> <Leader>wl :wincmd l<CR>
+nmap <silent> <Leader>wmm :wincmd o<CR>
+
+" SingleCompiler
+nmap <F5> :SCCompile<CR>
+nmap <F9> :SCCompileRun<CR>
+" for Rust
+nmap <F7> :SCCompileRun --test <CR>
+let g:SingleCompile_showquickfixiferror = 1
+
+" NERDtree
+nmap <silent> <Leader>op :NERDTreeToggle<CR>
+nmap <silent> <Leader>oP :NERDTreeFind<CR>
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let NERDTreeShowHidden = 1
+let NERDTreeMapActivateNode = "<Tab>"
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Airline
+" let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_theme = 'dark'
+let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+
+" Disable conceal for tla+
+augroup asteriskbold
+    au!
+    au BufNewFile,BufRead *.tla set conceallevel=0
+augroup end
