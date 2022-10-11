@@ -7,16 +7,12 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'xuhdev/singlecompile'
-Plug 'dracula/vim'
 Plug 'kana/vim-operator-user'
 Plug 'godlygeek/tabular'
 Plug 'florentc/vim-tla'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
-
-if &term == "alacritty"
-  let &term = "xterm-256color"
-endif
 
 " For tabs and indent
 set softtabstop=2
@@ -42,15 +38,8 @@ set incsearch
 set nohlsearch
 
 " Colors
-if has('termguicolors')
-  set termguicolors
-endif
-colorscheme dracula
-syntax on
-
-if has('gui')
-    set guioptions-=mrLtT
-endif
+set termguicolors
+color dracula
 
 if !exists("g:syntax_on")
     syntax enable
@@ -74,7 +63,7 @@ set autoread                   " autoreloading file
 set laststatus=2               " always display status bar
 
 " Share clipboard. To check: vim --version | grep clipboard
-set clipboard=unnamedplus
+set clipboard=unnamed
 
 " Bindings
 let mapleader = "\<Space>"
@@ -105,7 +94,6 @@ let NERDTreeMapActivateNode = "<Tab>"
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Airline
-" let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_theme = 'dark'
 let g:airline_powerline_fonts = 1
