@@ -10,4 +10,9 @@ brew install --cask font-iosevka-ss08
 
 brew install tmux ranger
 brew install ripgrep tokei bat exa
+
+brew tap railwaycat/emacsmacport
+brew install emacs-mac --with-modules --with-natural-title-bar --with-mac-metal --with-native-comp
+ln -fs /opt/homebrew/opt/emacs-mac/Emacs.app /Applications
+# TODO ~/.emacs.d/bin/doom sync
 {{ end -}}
